@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 
+from process import calc_cost
+
 
 app = Flask(__name__)
 
@@ -9,8 +11,8 @@ def hello():
     message = ""
     if request.method == "POST":
         area = request.form.get("area")
-        area = float(area)  # TODO: добавить проверку ввода
-        message = f"Площадь квартиры: {area} кв.м."
+        cost = calc_cost(area)
+        message = f"Стоимость квартиры: {cost} руб."
     return render_template("index.html", message=message)
 
 
