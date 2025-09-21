@@ -29,5 +29,3 @@ def login():
             message = f"Имя пользователя: {username}, пароль {password}"
     return render_template("login.html", message=message)
 
-
-app.run()
