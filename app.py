@@ -4,9 +4,14 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=["get", "post"])
 def hello():
-    return "Hello!"
+    message = ""
+    if request.method == "POST":
+        area = request.form.get("area")
+        area = float(area)  # TODO: добавить проверку ввода
+        message = f"Площадь квартиры: {area} кв.м."
+    return render_template("index.html", message=message)
 
 
 @app.route("/login/", methods=["get", "post"])
