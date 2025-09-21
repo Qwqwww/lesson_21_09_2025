@@ -11,7 +11,8 @@ def hello():
 
 @app.route("/login/", methods=["get", "post"])
 def login():
-    return render_template("login.html")
+    message = "Место под сообщение"
+    return render_template("login.html", message=message)
 
 
 app.run()
